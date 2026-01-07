@@ -1,249 +1,128 @@
-<!doctype html>
-<html lang="ru">
+<!DOCTYPE html><html lang="ru">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>DEPRICED</title>
-  <meta name="description" content="Биография и ссылки на соцсети" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>depriced — links</title>
   <style>
-    :root{
-      --bg-1:#0b1220;
-      --card-1:#0f1724;
-      --card-2:#071026;
-      --muted:#9aa4b2;
-      --accent:#9be3ff;
-      --glass: rgba(7,17,38,0.55);
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(1200px 600px at top, #111 0%, #000 60%);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+      color: #fff;
     }
-    /* Reset */
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body,#root{height:100%}
-    body{
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: linear-gradient(180deg,var(--bg-1) 0%, #05070b 100%);
-      color:#e6eef7;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:24px;
+    .card {
+      width: 100%;
+      max-width: 420px;
+      padding: 28px;
+      border-radius: 22px;
+      background: rgba(20,20,20,0.85);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+      position: relative;
+      overflow: hidden;
     }
-
-    /* Card */
-    .card{
-      width:100%;
-      max-width:420px;
-      background: linear-gradient(180deg,var(--card-1), var(--card-2));
-      border-radius:20px;
-      padding:20px;
-      box-shadow: 0 10px 30px rgba(2,6,23,0.7), inset 0 1px 0 rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.03);
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 22px;
+      padding: 2px;
+      background: linear-gradient(120deg, #7cffc4, #7aa2ff, #c77dff, #7cffc4);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      animation: glow 6s linear infinite;
     }
-
-    .header{
-      display:flex;
-      gap:14px;
-      align-items:center;
-      margin-bottom:14px;
+    @keyframes glow {
+      0% { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(360deg); }
     }
-    .avatar{
-      width:76px;height:76px;border-radius:999px;flex:0 0 76px;
-      background:#0f1724;
-      display:block;
-      object-fit:cover;
-      border:2px solid rgba(155,227,255,0.12);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+    .avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      margin: 0 auto 14px;
+      background: linear-gradient(135deg, #7aa2ff, #c77dff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 28px;
+      letter-spacing: 1px;
     }
-    .name{
-      font-size:18px;
-      font-weight:600;
-      line-height:1.05;
-      color:#fff;
+    h1 {
+      margin: 0;
+      text-align: center;
+      font-size: 26px;
     }
-    .subtitle{font-size:13px;color:var(--muted); margin-top:6px;}
-
-    .bio{
-      font-size:14px;
-      color:#cfe8ff;
-      line-height:1.45;
-      margin-bottom:16px;
-      opacity:0.95;
+    .subtitle {
+      text-align: center;
+      opacity: 0.75;
+      margin-top: 6px;
+      margin-bottom: 18px;
     }
-
-    /* RGB animated glowing line */
-    .rgb-line-wrap{position:relative;height:6px;border-radius:999px;margin-bottom:18px;overflow:visible}
-    .rgb-line{
-      width:100%;
-      height:6px;
-      border-radius:999px;
-      background:linear-gradient(90deg,#ff4da6 0%, #8b5cf6 40%, #06b6d4 70%, #3b82f6 100%);
-      background-size:200% 100%;
-      animation: moveGradient 3s linear infinite;
-      position:relative;
-      z-index:2;
-      filter: saturate(1.15);
+    .bio {
+      text-align: center;
+      font-size: 15px;
+      line-height: 1.5;
+      opacity: 0.9;
+      margin-bottom: 22px;
     }
-
-    /* Social buttons */
-    .links{display:flex;flex-direction:column;gap:10px}
-    .link{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      padding:12px 14px;
-      border-radius:12px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border:1px solid rgba(255,255,255,0.02);
-      cursor:pointer;
-      transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+    .links {
+      display: grid;
+      gap: 12px;
     }
-    .link:hover{ transform: translateY(-3px); box-shadow: 0 8px 30px rgba(3,8,23,0.6); }
-    .link .left{display:flex;align-items:center;gap:12px}
-    .icon{
-      width:44px;height:44px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;font-size:20px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-      border:1px solid rgba(255,255,255,0.02);
+    .links a {
+      text-decoration: none;
+      color: #fff;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: transform .15s ease, background .15s ease;
     }
-    .link .meta{display:flex;flex-direction:column;align-items:flex-start}
-    .link .meta .title{font-weight:600;font-size:15px;color:#fff}
-    .link .meta .url{font-size:12px;color:var(--muted);max-width:200px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .open{font-size:13px;color:var(--accent);font-weight:600}
-
-    /* Footer */
-    .footer{display:flex;justify-content:space-between;align-items:center;margin-top:14px;font-size:12px;color:var(--muted)}
-    .btn-close{
-      background:transparent;border:1px solid rgba(255,255,255,0.04);padding:6px 10px;border-radius:8px;color:var(--muted);cursor:pointer;
+    .links a:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.12);
     }
-
-    /* Responsive */
-    @media (max-width:420px){
-      .card{padding:16px;border-radius:16px}
-      .avatar{width:64px;height:64px}
+    .label { font-weight: 500; }
+    .arrow { opacity: 0.6; }
+    footer {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 12px;
+      opacity: 0.4;
     }
   </style>
 </head>
 <body>
-  <div class="card" role="main" id="root">
-    <header class="header">
-      <!-- Аватар: поменяй URL если захочешь -->
-      <img class="avatar" id="avatar" src="https://avatars.dicebear.com/api/initials/YourName.svg" alt="Аватар">
-      <div>
-        <div class="name" id="displayName">DEPRICED</div>
-        <div class="subtitle" id="ageAndShort">хз лет • Краткая биография</div>
-      </div>
-    </header>
+  <div class="card">
+    <div class="avatar">D</div>
+    <h1>depriced</h1>
+    <div class="subtitle">создатель • стример • кодер</div><div class="bio">
+  Делаю контент, стримлю, экспериментирую с кодом и идеями.
+  Здесь все мои основные площадки — выбирай, где удобнее.
+</div>
 
-    <!-- Биография -->
-    <section class="bio" id="bioText">
-      Рафик чорт чорто
-    </section>
+<div class="links">
+  <a href="https://t.me/depriced" target="_blank"><span class="label">Telegram</span><span class="arrow">→</span></a>
+  <a href="https://t.me/CHANNEL" target="_blank"><span class="label">Telegram канал</span><span class="arrow">→</span></a>
+  <a href="https://twitch.tv/USERNAME" target="_blank"><span class="label">Twitch</span><span class="arrow">→</span></a>
+  <a href="https://youtube.com/@USERNAME" target="_blank"><span class="label">YouTube</span><span class="arrow">→</span></a>
+  <a href="#" target="_blank"><span class="label">Другие ссылки</span><span class="arrow">→</span></a>
+</div>
 
-    <!-- RGB line with glow -->
-    <div class="rgb-line-wrap" aria-hidden="true">
-      <div class="rgb-line"></div>
-    </div>
+<footer>
+  © depriced
+</footer>
 
-    <!-- Ссылки (поменяй href в data-url на свои) -->
-    <section class="links" aria-label="Социальные сети">
-      <div class="link" role="button" tabindex="0" data-url="https://instagram.com/your_username" onclick="openLink(this)">
-        <div class="left">
-          <div class="icon">📷</div>
-          <div class="meta">
-            <div class="title">Instagram</div>
-            <div class="url">instagram.com/your_username</div>
-          </div>
-        </div>
-        <div class="open">Открыть</div>
-      </div>
-
-      <div class="link" role="button" tabindex="0" data-url="https://youtube.com/channel/your_channel_id" onclick="openLink(this)">
-        <div class="left">
-          <div class="icon">▶️</div>
-          <div class="meta">
-            <div class="title">YouTube</div>
-            <div class="url">youtube.com/channel/your_channel_id</div>
-          </div>
-        </div>
-        <div class="open">Открыть</div>
-      </div>
-
-      <div class="link" role="button" tabindex="0" data-url="https://tiktok.com/@your_username" onclick="openLink(this)">
-        <div class="left">
-          <div class="icon">🎵</div>
-          <div class="meta">
-            <div class="title">TikTok</div>
-            <div class="url">tiktok.com/@your_username</div>
-          </div>
-        </div>
-        <div class="open">Открыть</div>
-      </div>
-
-      <div class="link" role="button" tabindex="0" data-url="https://t.me/depriced" onclick="openLink(this)">
-        <div class="left">
-          <div class="icon">💬</div>
-          <div class="meta">
-            <div class="title">Telegram канал</div>
-            <div class="url">t.me/depriced</div>
-          </div>
-        </div>
-        <div class="open">Открыть</div>
-      </div>
-    </section>
-
-    <div class="footer">
-      <div id="openSourceInfo">Открыто: в браузере</div>
-      <button class="btn-close" onclick="tryClose()">Закрыть</button>
-    </div>
   </div>
-
-  <script>
-    // --- Настройки: меняй значения ниже если хочешь ---
-    const CONFIG = {
-      displayName: "DEPRICED",               // имя/ник в шапке
-      ageAndShort: " • Краткая биография",     // под именем
-      bioText: "Привет что ли.",
-      avatarUrl: "https://avatars.dicebear.com/api/initials/YourName.svg"
-    };
-    // Подставляем настройки в DOM:
-    document.getElementById('displayName').textContent = CONFIG.displayName;
-    document.getElementById('ageAndShort').textContent = CONFIG.ageAndShort;
-    document.getElementById('bioText').textContent = CONFIG.bioText;
-    document.getElementById('avatar').src = CONFIG.avatarUrl;
-
-    // Open link helper — открывает безопасно в новой вкладке
-    function openLink(el){
-      const url = el.getAttribute('data-url');
-      if(!url) return;
-      // Если нужна интеграция с Telegram WebApp SDK — можно добавить проверку window.Telegram.WebApp
-      window.open(url, '_blank', 'noopener,noreferrer');
-    }
-
-    // Try to close window (if opened as popup)
-    function tryClose(){
-      try{
-        // Если открыто в WebApp Telegram:
-        if(window.Telegram && window.Telegram.WebApp && typeof window.Telegram.WebApp.close === 'function'){
-          window.Telegram.WebApp.close();
-          return;
-        }
-      }catch(e){}
-      // fallback
-      window.close();
-    }
-
-    // Accessibility: allow Enter/Space to activate links
-    document.querySelectorAll('.link').forEach(el=>{
-      el.addEventListener('keydown', (e)=>{
-        if(e.key === 'Enter' || e.key === ' '){
-          e.preventDefault();
-          openLink(el);
-        }
-      });
-    });
-
-    // (Опционально) если хочешь, чтобы страница открывалась в iframe Telegram как WebApp,
-    // можно использовать window.Telegram.WebApp API — сейчас кнопка "Закрыть" пытается использовать его.
-  </script>
 </body>
 </html>
