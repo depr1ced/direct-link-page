@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>depriced — links</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(1000px 500px at top, #111 0%, #000 60%);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+      color: #fff;
+    }
+
+    /* animated angle variable */
+    @property --a {
+      syntax: '<angle>';
+      inherits: false;
+      initial-value: 0deg;
+    }
+
+    /* ARGB border: smooth RGB spectrum + gap, clockwise */
+    .card-wrap {
+      position: relative;
+      padding: 3px; /* border thickness */
+      border-radius: 26px;
+      --a: 0deg;
+      background:
+        conic-gradient(from var(--a),
+          rgba(255,0,0,0.95) 0deg,
+          rgba(255,255,0,0.95) 60deg,
+          rgba(0,255,0,0.95) 120deg,
+          rgba(0,255,255,0.95) 180deg,
+          rgba(0,0,255,0.95) 240deg,
+          rgba(255,0,255,0.95) 300deg,
+          rgba(255,0,0,0.95) 360deg
+        );
+      animation: border-run 3.5s linear infinite;
+      filter: drop-shadow(0 0 10px rgba(120,120,255,0.6));
+    }
+
+    @keyframes border-run {
+      to { --a: 360deg; }
+    }
+
+    .card {
+      width: 100%;
+      max-width: 420px;
+      padding: 28px 26px 30px;
+      border-radius: 23px;
+      background: #000;
+      text-align: center;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
+    }
+
+    /* Avatar */
+    .avatar {
+      width: 110px;
+      height: 110px;
+      margin: 0 auto 14px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #7aa2ff, #c77dff);
+      padding: 3px;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #000;
+    }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    h1 {
+      margin: 6px 0 2px;
+      font-size: 26px;
+      letter-spacing: 0.5px;
+    }
+
+    .subtitle {
+      opacity: 0.65;
+      margin-bottom: 18px;
+    }
+
+    .bio {
+      font-size: 15px;
+      line-height: 1.5;
+      opacity: 0.85;
+      margin-bottom: 24px;
+    }
+
+    .links {
+      display: grid;
+      gap: 12px;
+    }
+
+    .links a {
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      color: #fff;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: linear-gradient(180deg, #2a2a2a, #1f1f1f);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: transform .12s ease, box-shadow .15s ease, filter .15s ease;
+    }
+
+    .links a:hover {
+      box-shadow: 0 6px 18px rgba(0,0,0,0.7), inset 0 0 0 1px rgba(255,255,255,0.08);
+      transform: translateY(-2px);
+      filter: brightness(1.1);
+    }
+
+    .links a:active {
+      transform: scale(0.96);
+      filter: brightness(0.95);
+    }
+
+    .links a::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(255,255,255,0.25), transparent 60%);
+      opacity: 0;
+      transition: opacity .25s ease;
+    }
+
+    .links a:active::after { opacity: 1; }
+
+    .label { font-weight: 500; }
+    .arrow { opacity: 0.6; }
+
+    footer {
+      margin-top: 22px;
+      font-size: 12px;
+      opacity: 0.35;
+    }
+  </style>
+</head>
+<body>
+  <div class="card-wrap">
+    <div class="card">
+
+      <div class="avatar">
+        <img src="https://github.com/depr1ced/inform/blob/main/Oguri%20Cap.png?raw=true" alt="avatar">
+      </div>
+
+      <h1>depriced</h1>
+      <div class="subtitle">Стример • Кодер</div>
+
+      <div class="bio">
+        Пишу код, стримлю и экспериментирую с идеями.
+        Здесь собраны все мои основные площадки.
+        Буду рад поддержке.
+      </div>
+
+      <div class="links">
+        <a href="https://t.me/depriced_live" target="_blank"><span class="label">Telegram</span><span class="arrow">→</span></a>
+        <a href="https://tiktok.com/@depriced" target="_blank"><span class="label">TikTok</span><span class="arrow">→</span></a>
+        <a href="https://twitch.tv/depreciated_genius" target="_blank"><span class="label">Twitch</span><span class="arrow">→</span></a>
+        <a href="https://www.donationalerts.com/r/depriced_tiktok" target="_blank"><span class="label">DonationAlerts</span><span class="arrow">→</span></a>
+      </div>
+
+      <footer>© depriced</footer>
+    </div>
+  </div>
+</body>
+</html>
