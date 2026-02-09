@@ -40,9 +40,9 @@ body {
   width: 100vw;
   height: 100vh;
   height: 100dvh; /* корректно для мобильных */
-  padding: 8px;
+  padding: 6px;
 
-  border-radius: 28px;              /* ⬅️ СКРУГЛЕНИЕ СНАРУЖИ */
+  border-radius: 32px;              /* ⬅️ СКРУГЛЕНИЕ СНАРУЖИ */
   overflow: hidden;                 /* ⬅️ УБИРАЕТ ОСТРЫЕ УГЛЫ */
 
   background: conic-gradient(
@@ -68,7 +68,7 @@ body {
   height: 100%;
   background: #000;
 
-  border-radius: 22px;              /* ⬅️ СКРУГЛЕНИЕ ВНУТРИ */
+  border-radius: 32px;              /* ⬅️ СКРУГЛЕНИЕ ВНУТРИ */
   overflow-y: auto;
 
   padding: 26px 22px 30px;
