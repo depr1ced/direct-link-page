@@ -1,124 +1,127 @@
 * {
   box-sizing: border-box;
-  -webkit-tap-highlight-color: transparent;
-}
-
-html, body {
-  width: 100%;
-  height: 100%;
-  margin: 0;
 }
 
 body {
-  background: #000;
+  margin: 0;
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: radial-gradient(1000px 500px at top, #111 0%, #000 60%);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
   color: #fff;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-  overflow: hidden;
-  border-radius: 32px;
-  opacity: 0;
-  animation: fadeIn .3s ease forwards;
 }
 
-@keyframes fadeIn {
-  to { opacity: 1; }
-}
-
-.fade-out {
-  opacity: 0;
-  transition: opacity .25s ease;
-}
-
-/* ================= RGB рамка ================= */
-
+/* animated angle */
 @property --a {
-  syntax: '<angle>';
+  syntax: "<angle>";
   inherits: false;
   initial-value: 0deg;
 }
 
+/* ===== RGB рамка ===== */
+
 .card-wrap {
-  width: 100vw;
-  height: 100vh;
-  height: 100dvh;
-
-  padding: 5px;                 /* ⬅️ РАМКА ТОНЬШЕ */
-
-  border-radius: 36px;          /* ⬅️ БОЛЬШЕ СКРУГЛЕНИЕ */
-  overflow: hidden;
+  position: relative;
+  padding: 2px; /* рамка тоньше */
+  border-radius: 36px;
 
   background: conic-gradient(
     from var(--a),
-    red,
-    yellow,
-    lime,
-    cyan,
-    blue,
-    magenta,
-    red
+    rgba(255,0,0,.9),
+    rgba(255,255,0,.9),
+    rgba(0,255,0,.9),
+    rgba(0,255,255,.9),
+    rgba(0,0,255,.9),
+    rgba(255,0,255,.9),
+    rgba(255,0,0,.9)
   );
 
-  animation: spin 4s linear infinite;
+  animation: border-run 4s linear infinite;
+  filter: drop-shadow(0 0 14px rgba(120,140,255,.6));
+
+  width: min(94vw, 420px);
 }
 
-@keyframes spin {
+@keyframes border-run {
   to { --a: 360deg; }
 }
 
-/* ================= карточка ================= */
+/* ===== карточка ===== */
 
 .card {
+  background: #000;
+  border-radius: 34px;
+  padding: 26px 24px 28px;
+
+  text-align: center;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.05);
+}
+
+/* ===== аватар ===== */
+
+.avatar-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 6px;
+  margin-bottom: 18px;
+}
+
+.avatar {
+  width: clamp(96px, 28vw, 120px);
+  height: clamp(96px, 28vw, 120px);
+
+  border-radius: 50%;
+  padding: 3px;
+
+  background: linear-gradient(135deg, #7aa2ff, #c77dff);
+  box-shadow: 0 0 18px rgba(140,160,255,.55);
+}
+
+.avatar img {
   width: 100%;
   height: 100%;
-
+  border-radius: 50%;
+  object-fit: cover;
   background: #000;
-  border-radius: 30px;          /* ⬅️ мягко внутри */
-  overflow-y: auto;
-
-  padding: 26px 22px 30px;
-
-  box-shadow:
-    inset 0 0 0 1px rgba(255,255,255,0.05);
 }
 
-/* scrollbar */
-.card::-webkit-scrollbar {
-  width: 6px;
-}
-.card::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,.2);
-  border-radius: 10px;
-}
-
-/* ================= тексты ================= */
+/* ===== текст ===== */
 
 h1 {
-  text-align: center;
-  margin: 10px 0 6px;
+  margin: 6px 0 4px;
   font-size: 26px;
+  letter-spacing: .5px;
 }
 
 .subtitle {
-  text-align: center;
-  opacity: .6;
-  margin-bottom: 20px;
+  opacity: .65;
+  margin-bottom: 18px;
 }
 
-/* ================= кнопки ================= */
+.bio {
+  font-size: 15px;
+  line-height: 1.5;
+  opacity: .85;
+  margin-bottom: 22px;
+}
+
+/* ===== кнопки ===== */
 
 .links {
   display: grid;
   gap: 12px;
 }
 
-.links a,
-.back-btn {
-  position: relative;
-  overflow: hidden;
+.links a {
   text-decoration: none;
   color: #fff;
 
   padding: 14px 16px;
-  border-radius: 18px;          /* ⬅️ мягче кнопки */
+  border-radius: 16px;
 
   background: linear-gradient(180deg, #2a2a2a, #1f1f1f);
 
@@ -129,8 +132,7 @@ h1 {
   transition: transform .12s ease, box-shadow .15s ease, filter .15s ease;
 }
 
-.links a:hover,
-.back-btn:hover {
+.links a:hover {
   transform: translateY(-2px);
   filter: brightness(1.1);
   box-shadow:
@@ -138,47 +140,23 @@ h1 {
     inset 0 0 0 1px rgba(255,255,255,.08);
 }
 
-.links a:active,
-.back-btn:active {
+.links a:active {
   transform: scale(.96);
   filter: brightness(.95);
 }
 
-.links a::after,
-.back-btn::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    circle at center,
-    rgba(255,255,255,0.25),
-    transparent 60%
-  );
-  opacity: 0;
-  transition: opacity .25s ease;
+.label {
+  font-weight: 500;
 }
 
-.links a:active::after,
-.back-btn:active::after {
-  opacity: 1;
+.arrow {
+  opacity: .6;
 }
 
-/* ================= PC specs ================= */
-
-.specs {
-  line-height: 1.7;
-  opacity: .88;
-}
-
-.specs h3 {
-  margin-top: 22px;
-}
-
-/* ================= footer ================= */
+/* ===== footer ===== */
 
 footer {
-  margin-top: 30px;
-  text-align: center;
+  margin-top: 22px;
   font-size: 12px;
   opacity: .35;
 }
