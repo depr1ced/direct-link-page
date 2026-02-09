@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>depriced — page 123</title>
+  <title>depriced — PC specs</title>
 
   <style>
     * { box-sizing: border-box; }
@@ -26,7 +26,6 @@
     }
 
     .card-wrap {
-      position: relative;
       padding: 3px;
       border-radius: 26px;
       --a: 0deg;
@@ -49,64 +48,69 @@
     }
 
     .card {
+      max-width: 440px;
       width: 100%;
-      max-width: 420px;
       padding: 34px 26px 32px;
       border-radius: 23px;
       background: #000;
-      text-align: center;
       box-shadow: inset 0 0 0 1px rgba(255,255,255,.05);
     }
 
     h1 {
+      text-align: center;
       margin: 0 0 6px;
       font-size: 26px;
       letter-spacing: .5px;
     }
 
     .subtitle {
+      text-align: center;
       opacity: .6;
-      margin-bottom: 20px;
-    }
-
-    .bio {
-      font-size: 15px;
-      line-height: 1.5;
-      opacity: .85;
       margin-bottom: 26px;
     }
 
-    .links {
-      display: grid;
-      gap: 12px;
+    .section {
+      margin-bottom: 22px;
     }
 
-    .links a {
-      text-decoration: none;
-      color: #fff;
-      padding: 14px 16px;
-      border-radius: 14px;
-      background: linear-gradient(180deg, #2a2a2a, #1f1f1f);
+    .section-title {
+      font-size: 14px;
+      letter-spacing: .8px;
+      opacity: .5;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .specs {
+      display: grid;
+      gap: 10px;
+      font-size: 15px;
+    }
+
+    .spec {
       display: flex;
       justify-content: space-between;
-      transition: transform .12s ease, box-shadow .15s ease, filter .15s ease;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: linear-gradient(180deg, #2a2a2a, #1f1f1f);
     }
 
-    .links a:hover {
-      transform: translateY(-2px);
-      filter: brightness(1.1);
-      box-shadow: 0 6px 18px rgba(0,0,0,.7);
+    .spec span:first-child {
+      opacity: .7;
+      white-space: nowrap;
     }
 
-    .links a:active {
-      transform: scale(.96);
-      filter: brightness(.95);
+    .spec span:last-child {
+      font-weight: 500;
+      text-align: right;
     }
 
     footer {
-      margin-top: 22px;
+      margin-top: 24px;
       font-size: 12px;
       opacity: .35;
+      text-align: center;
     }
   </style>
 </head>
@@ -115,13 +119,37 @@
   <div class="card-wrap">
     <div class="card">
 
-      <h1>Мой сетап</h1>
-      <div class="subtitle">Характеристики ПК</div>
+      <h1>depriced</h1>
+      <div class="subtitle">PC & Setup</div>
 
-      <div class="bio">
-        Материнская плата: MSI B760 GAMING PLUS WIFI<br>
-        Процессор: Intel I3-13100f<br>
-        Оперативная память: Kingston Fury Beast 32GB
+      <div class="section">
+        <div class="section-title">ПК</div>
+        <div class="specs">
+          <div class="spec"><span>CPU</span><span>Intel Core i3-13100F</span></div>
+          <div class="spec"><span>GPU</span><span>GIGABYTE RTX 4060 Aero OC</span></div>
+          <div class="spec"><span>RAM</span><span>Kingston Fury Beast 32 GB DDR5</span></div>
+          <div class="spec"><span>Motherboard</span><span>MSI B760 GAMING PLUS</span></div>
+          <div class="spec"><span>PSU</span><span>GIGABYTE 850 W</span></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Мониторы</div>
+        <div class="specs">
+          <div class="spec"><span>Main</span><span>Tehnicom 300 Hz</span></div>
+          <div class="spec"><span>Second</span><span>Samsung 2243SWXPLUS 60 Hz</span></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Периферия</div>
+        <div class="specs">
+          <div class="spec"><span>Mouse</span><span>A4Tech Bloody W60 Max</span></div>
+          <div class="spec"><span>Keyboard</span><span>Mchoose Ace68HE</span></div>
+          <div class="spec"><span>Graphics Pad</span><span>Gaomon S620</span></div>
+          <div class="spec"><span>Headset</span><span>A4Tech Bloody M320</span></div>
+          <div class="spec"><span>Microphone</span><span>Fifine A8</span></div>
+        </div>
       </div>
 
       <footer>© depriced</footer>
