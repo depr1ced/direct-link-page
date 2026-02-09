@@ -34,8 +34,8 @@ body {
 }
 
 .card-wrap {
-  width: 100vw;
-  height: 100vh;
+  width: dvw;
+  height: dvh;
   padding: 6px;
   background: conic-gradient(from var(--a),
     red, yellow, lime, cyan, blue, magenta, red);
