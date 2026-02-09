@@ -34,9 +34,9 @@ body {
 }
 
 .card-wrap {
-  width: dvw;
-  height: dvh;
-  padding: 6px;
+  width: 100vw;
+  height: 100dvh; /* КЛЮЧЕВАЯ СТРОКА */
+  padding: 6px; 
   background: conic-gradient(from var(--a),
     red, yellow, lime, cyan, blue, magenta, red);
   animation: spin 4s linear infinite;
