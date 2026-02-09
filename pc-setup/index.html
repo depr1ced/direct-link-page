@@ -16,10 +16,11 @@ html, body {
 
 body {
   margin: 0;
+  padding: clamp(10px, 2.5vw, 20px); /* safe space for rounded corners */
   background: radial-gradient(1200px 600px at top, #111 0%, #000 60%);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
   color: #fff;
-  overflow: hidden; /* ❗ убираем скролл у body */
+  overflow: hidden;
 }
 
 /* animated angle */
@@ -29,12 +30,12 @@ body {
   initial-value: 0deg;
 }
 
-/* FULLSCREEN glowing frame */
+/* FULLSCREEN glowing frame with rounded corners */
 .card-wrap {
   position: fixed;
-  inset: 0;
+  inset: clamp(10px, 2.5vw, 20px);
   padding: clamp(3px, 0.6vw, 4px);
-  border-radius: 0;
+  border-radius: clamp(18px, 5vw, 32px);
   --a: 0deg;
 
   background: conic-gradient(
@@ -49,7 +50,7 @@ body {
   );
 
   animation: border-run 3.5s linear infinite;
-  filter: drop-shadow(0 0 14px rgba(120,120,255,.65));
+  filter: drop-shadow(0 0 16px rgba(120,120,255,.65));
 }
 
 @keyframes border-run {
@@ -62,6 +63,7 @@ body {
   width: 100%;
   padding: clamp(20px, 5vw, 40px);
   background: #000;
+  border-radius: clamp(14px, 4vw, 28px);
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: #444 transparent;
