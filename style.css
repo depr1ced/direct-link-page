@@ -2,6 +2,13 @@
   box-sizing: border-box;
 }
 
+/* ===== глобальная анимация RGB ===== */
+@property --a {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
@@ -13,21 +20,21 @@ body {
   background: radial-gradient(1000px 500px at top, #111 0%, #000 60%);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
   color: #fff;
+
+  --a: 0deg;
+  animation: rgb-spin 6s linear infinite;
 }
 
-/* animated angle */
-@property --a {
-  syntax: "<angle>";
-  inherits: false;
-  initial-value: 0deg;
+@keyframes rgb-spin {
+  to { --a: 360deg; }
 }
 
-/* ===== RGB рамка ===== */
+/* ===== RGB рамка экрана ===== */
 
-.card-wrap {
-  position: relative;
-  padding: 2px; /* рамка тоньше */
-  border-radius: 36px;
+.screen-rgb {
+  position: fixed;
+  inset: 0;
+  padding: 2px;
 
   background: conic-gradient(
     from var(--a),
@@ -40,24 +47,43 @@ body {
     rgba(255,0,0,.9)
   );
 
-  animation: border-run 4s linear infinite;
-  filter: drop-shadow(0 0 14px rgba(120,140,255,.6));
-
-  width: min(94vw, 420px);
+  pointer-events: none;
+  z-index: 0;
 }
 
-@keyframes border-run {
-  to { --a: 360deg; }
+/* всё поверх рамки */
+body > *:not(.screen-rgb) {
+  position: relative;
+  z-index: 1;
 }
 
 /* ===== карточка ===== */
 
+.card-wrap {
+  padding: 2px; /* рамка тонкая */
+  border-radius: 38px;
+
+  background: conic-gradient(
+    from var(--a),
+    rgba(255,0,0,.9),
+    rgba(255,255,0,.9),
+    rgba(0,255,0,.9),
+    rgba(0,255,255,.9),
+    rgba(0,0,255,.9),
+    rgba(255,0,255,.9),
+    rgba(255,0,0,.9)
+  );
+
+  filter: drop-shadow(0 0 16px rgba(120,140,255,.6));
+  width: min(94vw, 420px);
+}
+
 .card {
   background: #000;
-  border-radius: 34px;
+  border-radius: 36px;
   padding: 26px 24px 28px;
-
   text-align: center;
+
   box-shadow: inset 0 0 0 1px rgba(255,255,255,.05);
 }
 
@@ -66,7 +92,7 @@ body {
 .avatar-wrap {
   display: flex;
   justify-content: center;
-  margin-top: 6px;
+  margin-top: 8px;
   margin-bottom: 18px;
 }
 
@@ -77,8 +103,18 @@ body {
   border-radius: 50%;
   padding: 3px;
 
-  background: linear-gradient(135deg, #7aa2ff, #c77dff);
-  box-shadow: 0 0 18px rgba(140,160,255,.55);
+  background: conic-gradient(
+    from var(--a),
+    #ff3b3b,
+    #ffe23b,
+    #3bff6f,
+    #3bd9ff,
+    #3b5bff,
+    #d43bff,
+    #ff3b3b
+  );
+
+  box-shadow: 0 0 18px rgba(140,160,255,.6);
 }
 
 .avatar img {
@@ -121,7 +157,7 @@ h1 {
   color: #fff;
 
   padding: 14px 16px;
-  border-radius: 16px;
+  border-radius: 18px;
 
   background: linear-gradient(180deg, #2a2a2a, #1f1f1f);
 
