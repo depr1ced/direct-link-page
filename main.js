@@ -1,19 +1,16 @@
-// fade-out navigation
-document.querySelectorAll('a[href^="/"]').forEach(link => {
-  link.addEventListener('click', e => {
-    e.preventDefault();
-    const url = link.getAttribute('href');
-    document.body.classList.add('fade-out');
-    setTimeout(() => {
-      window.location.href = url;
-    }, 250);
-  });
-});
+function haptic(ms = 15) {
+  if (navigator.vibrate) navigator.vibrate(ms);
+}
 
-// active link highlight
-const path = window.location.pathname;
-document.querySelectorAll('.links a').forEach(link => {
-  if (link.getAttribute('href') === path) {
-    link.classList.add('active');
-  }
+document.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', e => {
+    const href = link.getAttribute('href');
+    haptic(15);
+
+    if (href && href.startsWith('/')) {
+      e.preventDefault();
+      document.body.classList.add('fade-out');
+      setTimeout(() => location.href = href, 220);
+    }
+  });
 });
