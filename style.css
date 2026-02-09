@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 
-/* ===== глобальная анимация RGB ===== */
+/* ===== единая RGB анимация ===== */
 @property --a {
   syntax: "<angle>";
   inherits: true;
@@ -17,74 +17,66 @@ body {
   align-items: center;
   justify-content: center;
 
-  background: radial-gradient(1000px 500px at top, #111 0%, #000 60%);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  background: #000;
   color: #fff;
+  font-family: system-ui, sans-serif;
 
   --a: 0deg;
-  animation: rgb-spin 6s linear infinite;
+  animation: spin 6s linear infinite;
 }
 
-@keyframes rgb-spin {
+@keyframes spin {
   to { --a: 360deg; }
 }
 
-/* ===== RGB рамка экрана ===== */
+/* ===== RGB КАНТИК ЭКРАНА (ТОНКИЙ) ===== */
 
-.screen-rgb {
+.screen-border {
   position: fixed;
   inset: 0;
-  padding: 2px;
-
-  background: conic-gradient(
-    from var(--a),
-    rgba(255,0,0,.9),
-    rgba(255,255,0,.9),
-    rgba(0,255,0,.9),
-    rgba(0,255,255,.9),
-    rgba(0,0,255,.9),
-    rgba(255,0,255,.9),
-    rgba(255,0,0,.9)
-  );
-
   pointer-events: none;
   z-index: 0;
 }
 
-/* всё поверх рамки */
-body > *:not(.screen-rgb) {
-  position: relative;
-  z-index: 1;
+.screen-border::before {
+  content: "";
+  position: absolute;
+  inset: 6px;                 /* отступ от края */
+  border-radius: 22px;
+  padding: 2px;               /* толщина кантика */
+
+  background: conic-gradient(
+    from var(--a),
+    red, yellow, lime, cyan, blue, magenta, red
+  );
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
 }
 
 /* ===== карточка ===== */
 
 .card-wrap {
-  padding: 2px; /* рамка тонкая */
-  border-radius: 38px;
+  z-index: 1;
+  padding: 2px;
+  border-radius: 34px;
 
   background: conic-gradient(
     from var(--a),
-    rgba(255,0,0,.9),
-    rgba(255,255,0,.9),
-    rgba(0,255,0,.9),
-    rgba(0,255,255,.9),
-    rgba(0,0,255,.9),
-    rgba(255,0,255,.9),
-    rgba(255,0,0,.9)
+    red, yellow, lime, cyan, blue, magenta, red
   );
 
-  filter: drop-shadow(0 0 16px rgba(120,140,255,.6));
-  width: min(94vw, 420px);
+  width: min(92vw, 420px);
 }
 
 .card {
   background: #000;
-  border-radius: 36px;
-  padding: 26px 24px 28px;
+  border-radius: 32px;
+  padding: 26px;
   text-align: center;
-
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,.05);
 }
 
 /* ===== аватар ===== */
@@ -92,29 +84,19 @@ body > *:not(.screen-rgb) {
 .avatar-wrap {
   display: flex;
   justify-content: center;
-  margin-top: 8px;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
 .avatar {
-  width: clamp(96px, 28vw, 120px);
-  height: clamp(96px, 28vw, 120px);
-
-  border-radius: 50%;
+  width: 110px;
+  height: 110px;
   padding: 3px;
+  border-radius: 50%;
 
   background: conic-gradient(
     from var(--a),
-    #ff3b3b,
-    #ffe23b,
-    #3bff6f,
-    #3bd9ff,
-    #3b5bff,
-    #d43bff,
-    #ff3b3b
+    red, yellow, lime, cyan, blue, magenta, red
   );
-
-  box-shadow: 0 0 18px rgba(140,160,255,.6);
 }
 
 .avatar img {
@@ -122,27 +104,17 @@ body > *:not(.screen-rgb) {
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
-  background: #000;
 }
 
 /* ===== текст ===== */
 
 h1 {
-  margin: 6px 0 4px;
-  font-size: 26px;
-  letter-spacing: .5px;
+  margin: 6px 0;
 }
 
 .subtitle {
-  opacity: .65;
-  margin-bottom: 18px;
-}
-
-.bio {
-  font-size: 15px;
-  line-height: 1.5;
-  opacity: .85;
-  margin-bottom: 22px;
+  opacity: .6;
+  margin-bottom: 20px;
 }
 
 /* ===== кнопки ===== */
@@ -156,43 +128,10 @@ h1 {
   text-decoration: none;
   color: #fff;
 
+  background: #1c1c1c;
   padding: 14px 16px;
-  border-radius: 18px;
-
-  background: linear-gradient(180deg, #2a2a2a, #1f1f1f);
+  border-radius: 16px;
 
   display: flex;
   justify-content: space-between;
-  align-items: center;
-
-  transition: transform .12s ease, box-shadow .15s ease, filter .15s ease;
-}
-
-.links a:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.1);
-  box-shadow:
-    0 6px 18px rgba(0,0,0,.7),
-    inset 0 0 0 1px rgba(255,255,255,.08);
-}
-
-.links a:active {
-  transform: scale(.96);
-  filter: brightness(.95);
-}
-
-.label {
-  font-weight: 500;
-}
-
-.arrow {
-  opacity: .6;
-}
-
-/* ===== footer ===== */
-
-footer {
-  margin-top: 22px;
-  font-size: 12px;
-  opacity: .35;
 }
