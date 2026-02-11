@@ -1,16 +1,26 @@
-function haptic(ms = 15) {
-  if (navigator.vibrate) navigator.vibrate(ms);
-}
+document.addEventListener("DOMContentLoaded", () => {
+  const card = document.querySelector(".card");
 
-document.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', e => {
-    const href = link.getAttribute('href');
-    haptic(15);
-
-    if (href && href.startsWith('/')) {
-      e.preventDefault();
-      document.body.classList.add('fade-out');
-      setTimeout(() => location.href = href, 220);
+  /* ===== Автоцентрирование если мало контента ===== */
+  function checkHeight() {
+    if (card.scrollHeight <= window.innerHeight) {
+      card.classList.add("center");
+    } else {
+      card.classList.remove("center");
     }
+  }
+
+  checkHeight();
+  window.addEventListener("resize", checkHeight);
+
+  /* ===== HAPTIC TAP ===== */
+  const clickableElements = document.querySelectorAll("a");
+
+  clickableElements.forEach(el => {
+    el.addEventListener("click", () => {
+      if (navigator.vibrate) {
+        navigator.vibrate(10); // лёгкий тап 10ms
+      }
+    });
   });
 });
