@@ -1,129 +1,82 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-/* ===== единая RGB анимация ===== */
-@property --a {
-  syntax: "<angle>";
-  inherits: true;
-  initial-value: 0deg;
+html, body {
+  height: 100%;
 }
 
 body {
-  margin: 0;
-  height: 100vh;
-
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
   background: #000;
   color: #fff;
-  font-family: system-ui, sans-serif;
-
-  --a: 0deg;
-  animation: spin 8s linear infinite;
+  overflow-x: hidden;
 }
 
-@keyframes spin {
-  to { --a: 360deg; }
+/* =======================
+   RGB по краю экрана
+======================= */
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
 }
 
-/* ===== RGB ТОЛЬКО ПО КРАЮ ЭКРАНА ===== */
-
-.screen-border {
+body::before {
+  content: "";
   position: fixed;
   inset: 0;
-  pointer-events: none;
-  z-index: 10;
-}
-
-.screen-border::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  padding: 2px;                 /* толщина кантика */
-  border-radius: 22px;
-
+  padding: 3px; /* толщина рамки */
+  border-radius: 40px;
   background: conic-gradient(
-    from var(--a),
-    red, yellow, lime, cyan, blue, magenta, red
+    from var(--angle),
+    red,
+    yellow,
+    lime,
+    cyan,
+    blue,
+    magenta,
+    red
   );
-
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
           mask-composite: exclude;
+
+  animation: rotate 4s linear infinite;
+  pointer-events: none;
 }
 
-/* ===== КАРТОЧКА = ВЕСЬ ЭКРАН ===== */
+@keyframes rotate {
+  to { --angle: 360deg; }
+}
+
+/* =======================
+   Основная карточка
+======================= */
 
 .card {
-  height: 100vh;
-  width: 100vw;
-
-  padding: 24px 20px 32px;
-  overflow-y: auto;
-
+  min-height: 100vh;
+  width: 100%;
+  padding: 40px 20px 60px;
   text-align: center;
+  overflow-y: auto;
 }
 
-/* ===== АВАТАР С RGB ВОКРУГ ===== */
+/* если контента мало — центрируем */
+.card.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* =======================
+   Аватар с RGB
+======================= */
 
 .avatar-wrap {
-  display: flex;
-  justify-content: center;
-  margin-top: 8px;
-  margin-bottom: 20px;
-}
-
-.avatar {
-  width: clamp(96px, 26vw, 120px);
-  height: clamp(96px, 26vw, 120px);
-
-  padding: 3px;
-  border-radius: 50%;
-
-  background: conic-gradient(
-    from var(--a),
-    red, yellow, lime, cyan, blue, magenta, red
-  );
-}
-
-.avatar img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-/* ===== ТЕКСТ ===== */
-
-h1 {
-  margin: 6px 0 4px;
-  font-size: 26px;
-}
-
-.subtitle {
-  opacity: .6;
-  margin-bottom: 24px;
-}
-
-/* ===== КНОПКИ ===== */
-
-.links {
-  display: grid;
-  gap: 14px;
-  max-width: 420px;
-  margin: 0 auto;
-}
-
-.links a {
-  text-decoration: none;
-  color: #fff;
-
-  background: #1c1c1c;
-  padding: 14px 16px;
-  border-radius: 18px;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+  width: 140px
