@@ -3,159 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>depriced — PC setup</title>
-
-  <style>
-    * { box-sizing: border-box; }
-
-    /* ===== RGB анимация ===== */
-    @property --a {
-      syntax: "<angle>";
-      inherits: true;
-      initial-value: 0deg;
-    }
-
-    body {
-      margin: 0;
-      height: 100vh;
-      background: #000;
-      color: #fff;
-      font-family: system-ui, sans-serif;
-
-      --a: 0deg;
-      animation: spin 8s linear infinite;
-    }
-
-    @keyframes spin {
-      to { --a: 360deg; }
-    }
-
-    /* ===== RGB по краю экрана ===== */
-    .screen-border {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 10;
-    }
-
-    .screen-border::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      padding: 2px;
-      border-radius: 22px;
-
-      background: conic-gradient(
-        from var(--a),
-        red, yellow, lime, cyan, blue, magenta, red
-      );
-
-      -webkit-mask:
-        linear-gradient(#000 0 0) content-box,
-        linear-gradient(#000 0 0);
-      -webkit-mask-composite: xor;
-              mask-composite: exclude;
-    }
-
-    /* ===== карточка = весь экран ===== */
-    .card {
-      height: 100vh;
-      width: 100vw;
-      padding: 24px 20px 40px;
-      overflow-y: auto;
-      text-align: center;
-    }
-
-    /* ===== аватар ===== */
-    .avatar-wrap {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 24px;
-    }
-
-    .avatar {
-      width: clamp(90px, 25vw, 110px);
-      height: clamp(90px, 25vw, 110px);
-      padding: 3px;
-      border-radius: 50%;
-
-      background: conic-gradient(
-        from var(--a),
-        red, yellow, lime, cyan, blue, magenta, red
-      );
-    }
-
-    .avatar img {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-
-    h1 {
-      margin: 6px 0 20px;
-      font-size: 24px;
-    }
-
-    /* ===== список характеристик ===== */
-    .specs {
-      max-width: 500px;
-      margin: 0 auto;
-      text-align: left;
-      line-height: 1.6;
-      opacity: .9;
-    }
-
-    .specs p {
-      margin: 6px 0;
-    }
-
-    /* ===== кнопка back ===== */
-    .back {
-      margin-top: 30px;
-      display: inline-block;
-      text-decoration: none;
-      color: #fff;
-      background: #1c1c1c;
-      padding: 14px 22px;
-      border-radius: 18px;
-    }
-  </style>
+  <title>PC Setup — depriced</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="screen-border"></div>
-
-  <main class="card">
+  <div class="card">
 
     <div class="avatar-wrap">
       <div class="avatar">
-        <img src="https://github.com/depr1ced/direct-link-page/blob/main/Oguri_Cap.png?raw=true" alt="avatar">
+        <img src="https://github.com/depr1ced/direct-link-page/blob/main/Oguri_Cap.png?raw=true">
       </div>
     </div>
 
-    <h1>PC setup</h1>
+    <h1>PC Setup</h1>
+    <div class="subtitle">Моё железо</div>
 
-    <div class="specs">
-      <p><strong>Процессор:</strong> Intel i3-13100F</p>
-      <p><strong>Видеокарта:</strong> GIGABYTE RTX 4060 Aero OC</p>
-      <p><strong>ОЗУ:</strong> Kingston Fury Beast 32GB DDR5</p>
-      <p><strong>Материнка:</strong> MSI B760 GAMING PLUS</p>
-      <p><strong>БП:</strong> GIGABYTE 850W</p>
-      <br>
-      <p><strong>Монитор 1:</strong> Tehnicom 300Hz</p>
-      <p><strong>Монитор 2:</strong> Samsung 2243SWXPLUS 60Hz</p>
-      <br>
-      <p><strong>Мышь:</strong> A4tech Bloody W60 Max</p>
-      <p><strong>Клавиатура:</strong> Mchoose Ace68HE</p>
-      <p><strong>Графический планшет:</strong> Gaomon S620</p>
-      <p><strong>Наушники:</strong> A4tech Bloody M320</p>
-      <p><strong>Микрофон:</strong> Fifine A8</p>
+    <div class="links">
+      <a>CPU — Ryzen 5</a>
+      <a>GPU — RTX</a>
+      <a>RAM — 32GB</a>
+      <a>SSD — 1TB</a>
+      <a href="/index.html">← Back</a>
     </div>
 
-    <a href="/" class="back">← Back</a>
-
-  </main>
+  </div>
 
 </body>
 </html>
