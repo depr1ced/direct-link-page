@@ -15,9 +15,7 @@ body {
   overflow-x: hidden;
 }
 
-/* =======================
-   RGB по краю экрана
-======================= */
+/* ================= RGB по краю экрана ================= */
 
 @property --angle {
   syntax: "<angle>";
@@ -29,8 +27,8 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  padding: 3px; /* толщина рамки */
-  border-radius: 40px;
+  padding: 2px; /* тонкая рамка */
+  border-radius: 42px;
   background: conic-gradient(
     from var(--angle),
     red,
@@ -46,7 +44,6 @@ body::before {
     linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
           mask-composite: exclude;
-
   animation: rotate 4s linear infinite;
   pointer-events: none;
 }
@@ -55,14 +52,12 @@ body::before {
   to { --angle: 360deg; }
 }
 
-/* =======================
-   Основная карточка
-======================= */
+/* ================= Карточка ================= */
 
 .card {
   min-height: 100vh;
   width: 100%;
-  padding: 40px 20px 60px;
+  padding: 60px 20px 80px;
   text-align: center;
   overflow-y: auto;
 }
@@ -74,9 +69,86 @@ body::before {
   justify-content: center;
 }
 
-/* =======================
-   Аватар с RGB
-======================= */
+/* ================= Аватар ================= */
 
 .avatar-wrap {
-  width: 140px
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 30px;
+  padding: 2px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from var(--angle),
+    red,
+    yellow,
+    lime,
+    cyan,
+    blue,
+    magenta,
+    red
+  );
+  animation: rotate 4s linear infinite;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #000;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ================= Текст ================= */
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  opacity: 0.6;
+  margin-bottom: 25px;
+}
+
+/* ================= Кнопки ================= */
+
+.links {
+  display: grid;
+  gap: 14px;
+}
+
+.links a {
+  text-decoration: none;
+  color: #fff;
+  padding: 16px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #1e1e1e, #141414);
+  transition: 0.15s ease;
+  font-weight: 500;
+}
+
+.links a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+}
+
+.links a:active {
+  transform: scale(0.96);
+}
+
+/* ================= Скролл ================= */
+
+.card::-webkit-scrollbar {
+  width: 6px;
+}
+
+.card::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.2);
+  border-radius: 10px;
+}
