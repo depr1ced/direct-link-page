@@ -119,30 +119,6 @@ h1 {
 
 /* ================= Кнопки ================= */
 
-.link {
-  display: grid;
-  gap: 14px;
-}
-
-.link li {
-  text-decoration: none;
-  color: #fff;
-  padding: 16px;
-  border-radius: 20px;
-  background: linear-gradient(180deg, #1e1e1e, #141414);
-  transition: 0.15s ease;
-  font-weight: 500;
-}
-
-.link li:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
-}
-
-.link li:active {
-  transform: scale(0.96);
-}
-
 .links {
   display: grid;
   gap: 14px;
