@@ -5,6 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PC Setup — depriced</title>
   <link rel="stylesheet" href="/style.css">
+  <style>
+    /* Эти стили решают твою задачу */
+    .links {
+      display: flex;
+      flex-direction: column; /* Выстраивает ссылки вертикально в ряд */
+      align-items: center;    /* Центрирует их (если карточка по центру) */
+      gap: 4px;               /* Расстояние между строками (регулируй по вкусу) */
+    }
+
+    .links a {
+      text-decoration: none;
+      display: inline-block;  /* Позволяет ссылкам вести себя как строки */
+      width: 100%;            /* Чтобы область клика была на всю ширину */
+    }
+
+    /* Стиль для кнопки назад, чтобы отделить её визуально */
+    .back-link {
+      margin-top: 15px;
+      opacity: 0.7;
+    }
+  </style>
 </head>
 <body>
 
@@ -12,7 +33,7 @@
 
     <div class="avatar-wrap">
       <div class="avatar">
-        <img src="https://github.com/depr1ced/direct-link-page/blob/main/Oguri_Cap.png?raw=true">
+        <img src="https://github.com/depr1ced/direct-link-page/blob/main/Oguri_Cap.png?raw=true" alt="Avatar">
       </div>
     </div>
 
@@ -21,25 +42,25 @@
 
     <div class="subtitle">Системный блок</div>
 
-   <div class="links">
-    <a>MSI B760 GAMING PLUS</a><br>
-    <a>INTEL i3-13100F</a><br>
-    <a>RTX 4060 Aero OC</a><br>
-    <a>Kingston Fury Beast 32GB DDR5</a><br>
-    <a>БП GIGABYTE 850W</a>
-</div>
-
+    <!-- Убрали <br>, теперь за перенос отвечает CSS класс .links -->
+    <div class="links">
+      <a href="#">MSI B760 GAMING PLUS</a>
+      <a href="#">INTEL i3-13100F</a>
+      <a href="#">RTX 4060 Aero OC</a>
+      <a href="#">Kingston Fury Beast 32GB DDR5</a>
+      <a href="#">БП GIGABYTE 850W</a>
+    </div>
 
     <div class="subtitle">Периферия</div>
 
     <div class="links">
-      <a>Мейн монитор: Tehnicom 300Hz</a>
-      <a>Твинк монитор: Samsung 60Hz</a>
-      <a>Клава: Mchose Ace68HE</a>
-      <a>ГП: Gaomon S620</a>
-      <a>Мышь: A4tech bloody W60 MAX</a>
-      <a>Микро: Fifine A8</a>
-      <a href="/">← Back</a>
+      <a href="#">Мейн монитор: Tehnicom 300Hz</a>
+      <a href="#">Твинк монитор: Samsung 60Hz</a>
+      <a href="#">Клава: Mchose Ace68HE</a>
+      <a href="#">ГП: Gaomon S620</a>
+      <a href="#">Мышь: A4tech bloody W60 MAX</a>
+      <a href="#">Микро: Fifine A8</a>
+      <a href="/" class="back-link">← Back</a>
     </div>
 
   </div>
