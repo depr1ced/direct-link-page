@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Depriced | Links & Setup</title>
+    
+    <title>Depriced | Ссылки и ПК</title>
+    
     <link rel="icon" type="image/jpeg" href="https://raw.githubusercontent.com/depr1ced/direct-link-page/refs/heads/main/Depriced Logo Small.png">
+
     <style>
         /* Базовые настройки и шрифты */
         * {
@@ -20,7 +23,7 @@
             min-height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: center; /* Центрируем по вертикали на больших экранах */
+            align-items: center; 
             overflow-x: hidden;
             position: relative;
             padding: 40px 20px;
@@ -40,11 +43,12 @@
         /* Новая двухколоночная сетка */
         .layout-grid {
             width: 100%;
-            max-width: 1100px; /* Сделали шире для двух колонок */
+            max-width: 1100px; 
             display: grid;
-            grid-template-columns: 1fr 1fr; /* Две одинаковые колонки */
+            grid-template-columns: 1fr 1fr; 
             gap: 24px;
             z-index: 1;
+            align-items: start; 
         }
 
         /* Контейнеры внутри колонок */
@@ -54,17 +58,16 @@
             gap: 24px;
         }
 
-        /* Общий стиль блоков (Черный фон + Темно-фиолетовая обводка) */
+        /* Общий стиль блоков */
         .block-card {
             background: #050505;
             border: 1px solid #3b0764;
             border-radius: 24px;
             padding: 30px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            height: 100%; /* Растягиваем блок по высоте, если нужно */
         }
 
-        /* Заголовки секций (LINKS, PC SETUP) */
+        /* Заголовки секций */
         .section-title {
             font-size: 0.8rem;
             letter-spacing: 2px;
@@ -73,7 +76,7 @@
             margin-bottom: 20px;
         }
 
-        /* --- ЛЕВАЯ КОЛОНКА (Профиль и Ссылки) --- */
+        /* --- ЛЕВАЯ КОЛОНКА --- */
         
         .profile-header {
             display: flex;
@@ -119,7 +122,7 @@
         .btn-outline {
             background: #000;
             color: #fff;
-            border: 1px solid #581c87; /* Изначальный темно-фиолетовый контур */
+            border: 1px solid #581c87; 
             padding: 8px 18px;
             border-radius: 20px;
             text-decoration: none;
@@ -129,15 +132,14 @@
             cursor: pointer;
         }
 
-        /* Изменение контура кнопок профиля при наведении */
         .btn-outline.tg-btn:hover {
-            background: rgba(36, 161, 222, 0.1); /* Прозрачный синий фон */
-            border-color: #24a1de;               /* Яркий синий контур */
+            background: rgba(36, 161, 222, 0.1); 
+            border-color: #24a1de;               
         }
 
         .btn-outline.mail-btn:hover {
-            background: rgba(168, 85, 247, 0.1); /* Прозрачный фиолетовый фон */
-            border-color: #c084fc;               /* Яркий фиолетовый контур */
+            background: rgba(168, 85, 247, 0.1); 
+            border-color: #c084fc;               
         }
 
         .links-container {
@@ -188,7 +190,6 @@
             transition: color 0.3s ease;
         }
 
-        /* Индивидуальные эффекты изменения контура для площадок */
         .link-item.telegram:hover {
             border-color: #24a1de;
             background: rgba(36, 161, 222, 0.04);
@@ -213,25 +214,74 @@
         }
         .link-item.donate:hover .link-icon { color: #ff7300; }
 
-        /* --- ПРАВАЯ КОЛОНКА (Девайсы) --- */
+        /* --- ПРАВАЯ КОЛОНКА --- */
         
-        .specs-list {
+        .tabs-header {
             display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(88, 28, 135, 0.3);
+            padding-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: transparent;
+            color: #71717a;
+            /* Изменили на transparent, чтобы кнопка сразу имела ширину рамки и не дергалась при фокусе */
+            border: 1px solid transparent; 
+            padding: 8px 14px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+        }
+
+        .tab-btn:hover {
+            color: #fff;
+            background: rgba(88, 28, 135, 0.15);
+        }
+
+        /* Спокойная подсветка активного таба без изменения геометрии */
+        .tab-btn.active {
+            color: #a78bfa;
+            background: rgba(88, 28, 135, 0.3);
+            border-color: #581c87;
+        }
+
+        .tabs-content-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .specs-list {
+            display: none;
             flex-direction: column;
             gap: 0;
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+        }
+
+        .specs-list.active {
+            display: flex;
+        }
+        
+        .specs-list.fade-in {
+            opacity: 1;
         }
 
         .spec-item {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 18px 0;
-            border-bottom: 1px solid rgba(88, 28, 135, 0.3); /* Тонкая фиолетовая линия между пунктами */
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(88, 28, 135, 0.2); 
             transition: padding-left 0.3s ease;
         }
 
         .spec-item:hover {
-            padding-left: 10px; /* Эффект небольшого сдвига при наведении */
+            padding-left: 10px; 
         }
 
         .spec-item:last-child {
@@ -255,10 +305,10 @@
         /* Адаптив под планшеты и мобилки */
         @media (max-width: 900px) {
             .layout-grid {
-                grid-template-columns: 1fr; /* Перестраиваем в одну колонку */
+                grid-template-columns: 1fr; 
             }
             body {
-                align-items: flex-start; /* Отключаем центрирование, чтобы можно было скроллить */
+                align-items: flex-start; 
             }
         }
 
@@ -322,7 +372,7 @@
                         <div class="link-left">
                             <div>
                                 <div class="link-title">Twitch</div>
-                                <span class="link-subtitle">Пмямые трансляции</span>
+                                <span class="link-subtitle">Прямые трансляции</span>
                             </div>
                         </div>
                         <div class="link-icon">↗</div>
@@ -343,53 +393,130 @@
 
         <div class="column">
             <div class="block-card">
-                <h2 class="section-title">PC Specs & Devices</h2>
+                <h2 class="section-title">My Setup & Gadgets</h2>
                 
-                <div class="specs-list">
-                    <div class="spec-item">
-                        <span class="spec-label">Процессор</span>
-                        <span class="spec-value">Intel i3-13100F</span>
-                    </div>
-                    
-                    <div class="spec-item">
-                        <span class="spec-label">Видеокарта</span>
-                        <span class="spec-value">Gigabyte RTX 4060 Aero OC</span>
+                <div class="tabs-header">
+                    <button class="tab-btn active" onclick="openTab('pc-specs')">Компоненты ПК</button>
+                    <button class="tab-btn" onclick="openTab('peripherals')">Периферия</button>
+                    <button class="tab-btn" onclick="openTab('gadgets')">Гаджеты</button>
+                </div>
+                
+                <div class="tabs-content-wrapper">
+                    <div id="pc-specs" class="specs-list active fade-in">
+                        <div class="spec-item">
+                            <span class="spec-label">Процессор</span>
+                            <span class="spec-value">Intel i3-13100F</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Видеокарта</span>
+                            <span class="spec-value">Gigabyte RTX 4060 Aero OC</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Материнская плата</span>
+                            <span class="spec-value">Msi B760 Gaming Plus Wi-Fi</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Оперативная память</span>
+                            <span class="spec-value">Kingston Fury Beast 32GB DDR5</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Охлаждение</span>
+                            <span class="spec-value">ID-Cooling Frozn A400</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Блок питания</span>
+                            <span class="spec-value">Gigabyte GP-UD850GM 850 Вт</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Память</span>
+                            <span class="spec-value">SSD: Samsung 990 Evo 1TB | Samsung 990 Evo 512GB | Kingston 118GB</span>
+                            <span class="spec-value">HDD: WD Blue 1TB</span>
+                        </div>
                     </div>
 
-                    <div class="spec-item">
-                        <span class="spec-label">Материнская плата</span>
-                        <span class="spec-value">Msi B760 Gaming Plus Wi-Fi</span>
+                    <div id="peripherals" class="specs-list">
+                        <div class="spec-item">
+                            <span class="spec-label">Монитор 1</span>
+                            <span class="spec-value">Tehnicom (300Hz)</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Монитор 2</span>
+                            <span class="spec-value">Samsung (60Hz)</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Графический планшет</span>
+                            <span class="spec-value">Gaomon S620</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Клавиатура</span>
+                            <span class="spec-value">Mchose Ace68HE</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Мышь</span>
+                            <span class="spec-value">A4tech bloody W60 MAX</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Микрофон</span>
+                            <span class="spec-value">Fifine A8</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Наушники</span>
+                            <span class="spec-value">A4Tech Bloody M320</span>
+                        </div>
                     </div>
 
-                    <div class="spec-item">
-                        <span class="spec-label">Оперативная память</span>
-                        <span class="spec-value">Kingston Fury Beast 32GB DDR5</span>
-                    </div>
-
-                    <div class="spec-item">
-                        <span class="spec-label">Графический планшет</span>
-                        <span class="spec-value">Gaomon S620</span>
-                    </div>
-
-                    <div class="spec-item">
-                        <span class="spec-label">Клавиатура</span>
-                        <span class="spec-value">Mchose Ace68HE</span>
-                    </div>
-
-                    <div class="spec-item">
-                        <span class="spec-label">Микрофон</span>
-                        <span class="spec-value">Fifine A8</span>
-                    </div>
-
-                    <div class="spec-item">
-                        <span class="spec-label">Монитор</span>
-                        <span class="spec-value">Tehnicom (300Hz)</span>
+                    <div id="gadgets" class="specs-list">
+                        <div class="spec-item">
+                            <span class="spec-label">Основной телефон</span>
+                            <span class="spec-value">Samsung S25</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Второй телефон / Камера на стримах</span>
+                            <span class="spec-value">Samsung S21 FE 5G</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Часы</span>
+                            <span class="spec-value">Galaxy Watch 6 Classic</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Ноутбуки</span>
+                            <span class="spec-value">Neyro Evobook 15 | Asus X550CC</span>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
 
     </div>
+
+    <script>
+        function openTab(tabId) {
+            const currentActiveList = document.querySelector('.specs-list.active');
+            const targetList = document.getElementById(tabId);
+            
+            if (currentActiveList === targetList) return;
+
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+
+            if (currentActiveList) {
+                currentActiveList.classList.remove('fade-in');
+                
+                setTimeout(() => {
+                    currentActiveList.classList.remove('active');
+                    targetList.classList.add('active');
+                    setTimeout(() => {
+                        targetList.classList.add('fade-in');
+                    }, 20);
+                }, 200);
+            } else {
+                targetList.classList.add('active');
+                targetList.classList.add('fade-in');
+            }
+        }
+    </script>
 
     <script>
         const canvas = document.getElementById('bgCanvas');
@@ -445,15 +572,12 @@
 
         function animate() {
             ctx.clearRect(0, 0, width, height);
-            
             particles.forEach(p => {
                 p.update();
                 p.draw();
             });
-
             requestAnimationFrame(animate);
         }
-        
         animate();
     </script>
 </body>
