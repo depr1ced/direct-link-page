@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#09090b" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="description" content="DEPRICED — BIO." />
+  <meta property="og:title" content="DEPRICED" />
+  <meta property="og:description" content="Depriced_Live" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://depriced.online/" />
+  <meta property="og:image" content="https://raw.githubusercontent.com/depr1ced/direct-link-page/refs/heads/main/Lappland.jpg" />
+  <link rel="icon" href="https://raw.githubusercontent.com/depr1ced/direct-link-page/refs/heads/main/Lappland.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unbounded:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>DEPRICED</title>
+</head>
+<body>
+  <div id="site-veil" aria-hidden="true"></div>
+  <div id="lang-veil" aria-hidden="true"></div>
+  <div class="bg" aria-hidden="true">
+    <canvas id="bg-canvas"></canvas>
+    <div class="bg__vignette"></div>
+    <div class="bg__grid"></div>
+    <div class="bg__accent bg__accent--one"></div>
+    <div class="bg__accent bg__accent--two"></div>
+  </div>
+
+  <header class="navbar">
+    <a class="navbar__brand" href="#top">DEPRICED</a>
+    <div class="navbar__right">
+      <span class="navbar__note" data-i18n="navNote">В дороге к лучшему...</span>
+      <div class="lang-switch" aria-label="Language switcher">
+        <button type="button" class="lang-btn is-active" data-lang="ru">RU</button>
+        <button type="button" class="lang-btn" data-lang="en">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page" id="top">
+    <section class="card hero reveal">
+      <div class="hero__avatar-wrap">
+        <img draggable="false" class="avatar" src="https://raw.githubusercontent.com/depr1ced/direct-link-page/refs/heads/main/Lappland.jpg" alt="DEPRICED" />
+      </div>
+      <div class="hero__text">
+        <div class="eyebrow" data-i18n="eyebrow">СТРИМЕР · КОДЕР</div>
+        <h1 class="name">DEPRICED</h1>
+        <p class="tagline" data-i18n="tagline">стримы | короткие видео | общение</p>
+        <p class="about" data-i18n="heroAbout">Имя: ??????? | Возраст: 20 | Пол: Мужской | Локация: Казахстан, Алматы</p>
+        <div class="hero__actions">
+          <a class="btn btn--solid" data-type="telegram" href="https://t.me/depriced" target="_blank" rel="noreferrer">Telegram <span>↗</span></a>
+          <a class="btn btn--ghost" data-type="discord" href="https://discord.gg/KedC92eD" target="_blank" rel="noreferrer">Discord <span>↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <div class="columns">
+      <section class="card reveal" id="links">
+        <div class="section-title" data-i18n="linksSection">ССЫЛКИ</div>
+        <div class="links">
+          <a class="link-row" data-type="telegram" href="https://t.me/depriced_live" target="_blank" rel="noreferrer">
+            <span class="link-icon" aria-hidden="true"><img src="assets/ico/telegram.png" alt="" draggable="false"></span><span class="link-text"><strong class="link-title">Telegram</strong><small class="link-subtitle" data-i18n="telegramSub">анонсы, чат</small></span><span class="link-arrow">↗</span>
+          </a>
+          <a class="link-row" data-type="tiktok" href="https://tiktok.com/@depriced" target="_blank" rel="noreferrer">
+            <span class="link-icon" aria-hidden="true"><img src="assets/ico/tiktok.png" alt="" draggable="false"></span><span class="link-text"><strong class="link-title">TikTok</strong><small class="link-subtitle">стримы + короткие видео</small></span><span class="link-arrow">↗</span>
+          </a>
+          <a class="link-row" data-type="twitch" href="https://twitch.tv/depreciated_genius" target="_blank" rel="noreferrer">
+            <span class="link-icon" aria-hidden="true"><img src="assets/ico/twitch.png" alt="" draggable="false"></span><span class="link-text"><strong class="link-title">Twitch</strong><small class="link-subtitle">стримы + VOD</small></span><span class="link-arrow">↗</span>
+          </a>
+          <a class="link-row" data-type="discord" href="https://discord.gg/sCpCFkZMph" target="_blank" rel="noreferrer">
+            <span class="link-icon" aria-hidden="true"><img src="assets/ico/discord.png" alt="" draggable="false"></span><span class="link-text"><strong class="link-title">Discord</strong><small class="link-subtitle" data-i18n="discordSub">сообщество</small></span><span class="link-arrow">↗</span>
+          </a>
+          <a class="link-row" data-type="donate" href="https://donationalerts.com/r/depriced" target="_blank" rel="noreferrer">
+            <span class="link-icon" aria-hidden="true"><img src="assets/ico/donationalerts.png" alt="" draggable="false"></span><span class="link-text"><strong class="link-title">DonationAlerts (На стриме)</strong><small class="link-subtitle" data-i18n="donateSub">поддержать канал</small></span><span class="link-arrow">↗</span>
+          </a>
+	  <a class="link-row" data-type="donate" href="https://dalink.to/depriced" target="_blank" rel="noreferrer">
+            <span class="link-icon" aria-hidden="true"><img src="assets/ico/dalink.png" alt="" draggable="false"></span><span class="link-text"><strong class="link-title">Dalink (Вне стрима)</strong><small class="link-subtitle" data-i18n="donateSub">поддержать канал</small></span><span class="link-arrow">↗</span>
+          </a>
+          <a class="link-row" data-type="osu" href="https://osu.ppy.sh/users/36426784/osu" target="_blank" rel="noreferrer">
+            <span class="link-icon" aria-hidden="true"><img src="assets/ico/osu.png" alt="" draggable="false"></span><span class="link-text"><strong class="link-title">osu!</strong><small class="link-subtitle" data-i18n="osuSub">профиль</small></span><span class="link-arrow">↗</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="card reveal" id="setup">
+        <div class="section-title" data-i18n="setupSection">СЕТАП</div>
+        <div class="tabs" role="tablist" aria-label="Категории сетапа">
+          <button class="tab active" type="button" data-tab="pc"><span data-i18n="tabPc">ПК</span></button>
+          <button class="tab" type="button" data-tab="periphery"><span data-i18n="tabPeriphery">Периферия</span></button>
+          <button class="tab" type="button" data-tab="gadgets"><span data-i18n="tabGadgets">Гаджеты</span></button>
+        </div>
+
+        <div class="setup-panel active" data-panel="pc">
+          <div class="setup-row"><span data-i18n="cpuLabel">CPU</span><strong>Intel i3-13100F</strong></div>
+          <div class="setup-row"><span data-i18n="gpuLabel">GPU</span><strong>Gigabyte RTX 4060 Aero OC</strong></div>
+          <div class="setup-row"><span data-i18n="mbLabel">MB</span><strong>MSI B760 Gaming Plus Wi-Fi</strong></div>
+          <div class="setup-row"><span data-i18n="ramLabel">RAM</span><strong>Kingston Fury Beast 32GB DDR5</strong></div>
+          <div class="setup-row"><span data-i18n="coolerLabel">COOLER</span><strong>ID-Cooling Frozn A400</strong></div>
+          <div class="setup-row"><span data-i18n="psuLabel">PSU</span><strong>Gigabyte GP-UD850GM 850W</strong></div>
+	  <div class="setup-row"><span data-i18n="romLabel">ROM</span><strong>SSD: Samsung 990 Evo 1TB+512GB | Kingston 118GB | HDD: WD Blue 1TB</strong></div>
+        </div>
+        <div class="setup-panel" data-panel="periphery" hidden>
+          <div class="setup-row"><span data-i18n="monitor1Label">MONITOR 1</span><strong>Tehnicom · 300Hz</strong></div>
+          <div class="setup-row"><span data-i18n="monitor2Label">MONITOR 2</span><strong>Samsung · 60Hz</strong></div>
+          <div class="setup-row"><span data-i18n="tabletLabel">TABLET</span><strong>Gaomon S620</strong></div>
+          <div class="setup-row"><span data-i18n="keyboardLabel">KEYBOARD</span><strong>Mchose Ace68HE</strong></div>
+          <div class="setup-row"><span data-i18n="mouseLabel">MOUSE</span><strong>A4Tech Bloody W60 MAX</strong></div>
+	  <div class="setup-row"><span data-i18n="microphoneLabel">MICROPHONE</span><strong>Fifine A8</strong></div>
+	  <div class="setup-row"><span data-i18n="headphonesLabel">HEADPHONES</span><strong>A4Tech Bloody M320</strong></div>
+        </div>
+        <div class="setup-panel" data-panel="gadgets" hidden>
+          <div class="setup-row"><span data-i18n="mainphoneLabel">MAIN PHONE</span><strong>Samsung Galaxy S25</strong></div>
+	  <div class="setup-row"><span data-i18n="webcamLabel">WEB CAMERA</span><strong>Samsung Galaxy S21FE 5G</strong></div>
+	  <div class="setup-row"><span data-i18n="watchLabel">WATCH</span><strong>Galaxy Watch 6 Classic</strong></div>
+	  <div class="setup-row"><span data-i18n="notebook1Label">WORK NOTEBOOK</span><strong>Neyro Evobook 15</strong></div>
+	  <div class="setup-row"><span data-i18n="notebook2Label">NOTEBOOK</span><strong>Asus X550CC</strong></div>
+        </div>
+      </section>
+    </div>
+
+    <section class="card compact-info reveal" id="about">
+      <div>
+        <div class="section-title section-title--short" data-i18n="aboutSection">О САЙТЕ</div>
+        <h2>depriced.online</h2>
+      </div>
+      <p data-i18n="aboutText"> Уголок где я могу свободно осуществлять свою мечту, и выражать свое настроение. </p>
+      <a href="mailto:depriced.dev@gmail.com">depriced.dev@gmail.com ↗</a>
+    </section>
+
+    <footer class="footer">
+      <span>© 2026 DEPRICED</span>
+      <div class="footer__links">
+        <a href="/privacy-policy"><span data-i18n="privacy">Privacy Policy</span></a>
+        <a href="/terms-of-service"><span data-i18n="terms">Terms of Service</span></a>
+      </div>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
